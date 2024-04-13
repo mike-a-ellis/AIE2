@@ -52,6 +52,12 @@ class VectorDatabase:
         for text, embedding in zip(list_of_text, embeddings):
             self.insert(text, np.array(embedding))
         return self
+    
+    def build_from_list(self, list_of_text: List[str]) -> "VectorDatabase":
+        embeddings = self.embedding_model.get_embeddings(list_of_text)
+        for text, embedding in zip(list_of_text, embeddings):
+            self.insert(text, np.array(embedding))
+        return self
 
 
 if __name__ == "__main__":
